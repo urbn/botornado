@@ -53,9 +53,9 @@ import re
 import socket
 import sys
 import time
-import urllib, urlparse
+import urllib
 import xml.sax
-
+from urlparse import urlunsplit
 import boto.auth
 import boto.auth_handler
 import boto
@@ -110,7 +110,7 @@ class AsyncHTTPConnection(object):
             host = "%s:%d" % (self.host, self.port)
         else:
             host = self.host
-        url = urlparse.urlunsplit((scheme, host, self.path, '', ''))
+        url = urlunsplit((scheme, host, self.path, '', ''))
         headers = tornado.httputil.HTTPHeaders()
         for (k,v) in self.headers:
             headers.add(k, v)
